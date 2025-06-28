@@ -57,4 +57,3 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
 ---
 
 > “Organize suas finanças pessoais de forma simples e eficiente.” – *Budgex*
-EOF
