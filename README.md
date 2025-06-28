@@ -1,5 +1,7 @@
-# Budgex - Sistematização PDM
-<p align="center">Organize suas finanças pessoais de forma simples e eficiente.</p>
+<p align="center">
+  <strong style="font-size: 2.5em;">Budgex - Sistematização PDM</strong>
+</p>
+
 
 Este projeto foi desenvolvido como parte da disciplina **Projeto de Desenvolvimento Multiplataforma (PDM)**. O **Budgex** é um aplicativo Android para gerenciamento financeiro pessoal, que permite o cadastro e listagem de despesas e receitas de forma simples e prática.
 
