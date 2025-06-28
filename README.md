@@ -54,12 +54,15 @@ cd BUDGEX-Sistematizacao-PDM
 
 5. Execute o app em um dispositivo Android físico ou emulador.
 
-👨‍💻 Desenvolvedor
-Newton Ramos Chaves Junior
+👨‍💻 Desenvolvedor:
+**Newton Ramos Chaves Junior**
 
-Perfil GitHub: Newton Ramos GitHub
+- Meu Repositório Online - [Newton Ramos GitHub](https://github.com/Newton-Ramos)
 
-Repositório do projeto: Budgex - Sistematização PDM
+ - Repositório do Projeto BUDGEX - [Projeto BUDGEX](https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM)
+
+ - 
+---
 
 > “Organize suas finanças pessoais de forma simples e eficiente.” – *Budgex*
-
+```
