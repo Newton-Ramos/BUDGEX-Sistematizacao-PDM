@@ -55,8 +55,7 @@ cd BUDGEX-Sistematizacao-PDM
 5. Execute o app em um dispositivo Android físico ou emulador.
 
 ---
-## 👨‍💻 Desenvolvedor:
-**Newton Ramos Chaves Junior**
+## 👨‍💻 Desenvolvedor:# **Newton Ramos Chaves Junior**
 
 - Meu Repositório Online - [Newton Ramos GitHub](https://github.com/Newton-Ramos)
 
