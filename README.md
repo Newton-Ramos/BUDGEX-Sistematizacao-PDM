@@ -37,7 +37,7 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
   
 2. Acesse o diretório do projeto:
 
-   cd BUDGEX-Sistematizacao-PDM
+ ```cd BUDGEX-Sistematizacao-PDM```
 
 3. Abra o Android Studio e selecione **Open**, escolhendo a pasta do projeto.
 
