@@ -1,0 +1,57 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">BUDGEX</string>
+    <string name="titulo_budgex">BUDGEX - Planejador Financeiro</string>
+
+    <!-- Tela inicial -->
+    <string name="titulo_cima">BUDGEX</string>
+    <string name="titulo_baixo">Planejador Financeiro</string>
+    <string name="descricao_logo">Logo BUDGEX</string>
+
+    <!-- Títulos -->
+    <string name="descricao_adicionar_despesa">Adicionar despesa</string>
+    <string name="descricao_adicionar_receita">Adicionar receita</string>
+
+    <!-- Hints - Despesas -->
+    <string name="descricao_hint_despesa">Descrição da despesa</string>
+    <string name="valor_hint_despesa">Valor da despesa</string>
+    <string name="data_hint_despesa">Data da despesa (ex: 25/06/2025)</string>
+
+    <!-- Hints - Receitas -->
+    <string name="descricao_hint_receita">Descrição da receita</string>
+    <string name="valor_hint_receita">Valor da receita</string>
+    <string name="data_hint_receita">Data da receita (ex: 25/06/2025)</string>
+
+    <!-- Labels e exemplos -->
+    <string name="descricao_label">Descrição</string>
+    <string name="valor_exemplo">R$ 0,00</string>
+    <string name="data_exemplo">25/06/2024</string>
+
+    <!-- Tipos -->
+    <string name="tipo_despesa">Despesa</string>
+    <string name="tipo_receita">Receita</string>
+
+    <!-- Botões -->
+    <string name="salvar_button">Salvar</string>
+    <string name="btn_ver_receitas">Ver Receitas</string>
+    <string name="btn_ver_despesas">Ver Despesas</string>
+    <string name="btn_clear_all">Limpar tudo</string>
+
+    <!-- Mensagens -->
+    <string name="preencha_todos_campos">Preencha todos os campos corretamente</string>
+    <string name="data_invalida">Data inválida. Use o formato dd/MM/yyyy</string>
+    <string name="despesa_salva">Despesa salva!</string>
+    <string name="receita_salva">Receita salva!</string>
+
+    <!-- Formatos -->
+    <string name="formato_valor">R$ %.2f</string>
+
+    <!-- Totais -->
+    <string name="total_despesas">Total Despesas: R$ %.2f</string>
+    <string name="total_receitas">Total Receitas: R$ %.2f</string>
+    <string name="total_inicial">Total: R$ 0,00</string>
+
+    <!-- Acessibilidade -->
+    <string name="deletar_despesa">Deletar Despesa</string>
+    <string name="deletar_receita">Deletar Receita</string>
+</resources>
