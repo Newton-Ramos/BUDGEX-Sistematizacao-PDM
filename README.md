@@ -1,4 +1,5 @@
-<h1 align="center">Budgex - Sistematização PDM</h1>
+# Budgex - Sistematização PDM
+<p align="center">Organize suas finanças pessoais de forma simples e eficiente.</p>
 
 Este projeto foi desenvolvido como parte da disciplina **Projeto de Desenvolvimento Multiplataforma (PDM)**. O **Budgex** é um aplicativo Android para gerenciamento financeiro pessoal, que permite o cadastro e listagem de despesas e receitas de forma simples e prática.
 
@@ -15,12 +16,12 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
 
 ### 📂 Diretórios e arquivos principais
 
-- **\`app/src/main/java/com/example/budgex/\`** – Código fonte Kotlin do aplicativo  
-- **\`app/src/main/res/layout/\`** – Layouts XML das telas (ex: \`activity_main.xml\`)  
-- **\`app/src/main/res/mipmap/\`** – Ícones e imagens do app  
-- **\`build.gradle.kts\`** – Configurações do Gradle  
-- **\`settings.gradle.kts\`** – Configurações de build  
-- **\`gradle/\`** – Wrapper e dependências do Gradle  
+- **`app/src/main/java/com/example/budgex/`** – Código fonte Kotlin do aplicativo  
+- **`app/src/main/res/layout/`** – Layouts XML das telas (ex: `activity_main.xml`)  
+- **`app/src/main/res/mipmap/`** – Ícones e imagens do app  
+- **`build.gradle.kts`** – Configurações do Gradle  
+- **`settings.gradle.kts`** – Configurações de build  
+- **`gradle/`** – Wrapper e dependências do Gradle  
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -33,24 +34,27 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
 
 1. Clone o repositório:
 
-   git clone: ```https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM.git```
-  
+```bash
+git clone https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM.git
+```
+
 2. Acesse o diretório do projeto:
+```bash
+cd BUDGEX-Sistematizacao-PDM 
+```
 
- ```cd BUDGEX-Sistematizacao-PDM```
-
-3. Abra o Android Studio e selecione **Open**, escolhendo a pasta do projeto.
+3. Abra o Android Studio e selecione Open, escolhendo a pasta do projeto.
 
 4. Aguarde a sincronização do Gradle e o download das dependências.
 
 5. Execute o app em um dispositivo Android físico ou emulador.
 
-## 👨‍💻 Desenvolvedor
+👨‍💻 Desenvolvedor
+Newton Ramos Chaves Junior
 
-**Newton Ramos Chaves Junior**  
-- Perfil GitHub: [Newton Ramos GitHub](https://github.com/Newton-Ramos)  
-- Repositório do projeto: [Budgex - Sistematização PDM](https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM)
+Perfil GitHub: Newton Ramos GitHub
 
----
+Repositório do projeto: Budgex - Sistematização PDM
 
 > “Organize suas finanças pessoais de forma simples e eficiente.” – *Budgex*
+
