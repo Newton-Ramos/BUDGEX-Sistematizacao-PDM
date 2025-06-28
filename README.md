@@ -32,10 +32,9 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
 ## 🚀 Como Executar o Projeto
 
 1. Clone o repositório:
-   ```bash
-   git clone https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM.git
-  
 
+   git clone: ``` bash https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM.git ```
+  
 2. Acesse o diretório do projeto:
 
    cd BUDGEX-Sistematizacao-PDM
