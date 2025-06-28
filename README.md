@@ -39,7 +39,7 @@ git clone https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM.git
 ```
 
 2. Acesse o diretório do projeto:
-```bash
+```
 cd BUDGEX-Sistematizacao-PDM 
 ```
 
