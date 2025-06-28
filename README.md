@@ -16,12 +16,12 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
 
 ### 📂 Diretórios e arquivos principais
 
-- **`app/src/main/java/com/example/budgex/`** – Código fonte Kotlin do aplicativo  
-- **`app/src/main/res/layout/`** – Layouts XML das telas (ex: `activity_main.xml`)  
-- **`app/src/main/res/mipmap/`** – Ícones e imagens do app  
-- **`build.gradle.kts`** – Configurações do Gradle  
-- **`settings.gradle.kts`** – Configurações de build  
-- **`gradle/`** – Wrapper e dependências do Gradle  
+- **\`app/src/main/java/com/example/budgex/\`** – Código fonte Kotlin do aplicativo  
+- **\`app/src/main/res/layout/\`** – Layouts XML das telas (ex: \`activity_main.xml\`)  
+- **\`app/src/main/res/mipmap/\`** – Ícones e imagens do app  
+- **\`build.gradle.kts\`** – Configurações do Gradle  
+- **\`settings.gradle.kts\`** – Configurações de build  
+- **\`gradle/\`** – Wrapper e dependências do Gradle  
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -33,30 +33,28 @@ O projeto é composto por arquivos Kotlin, recursos visuais e arquivos de config
 ## 🚀 Como Executar o Projeto
 
 1. Clone o repositório:
-   ```bash
+   \`\`\`bash
    git clone https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM.git
+   \`\`\`
 
 2. Acesse o diretório do projeto:
+   \`\`\`bash
+   cd BUDGEX-Sistematizacao-PDM
+   \`\`\`
 
-```bash
-Copiar
-Editar
-cd BUDGEX-Sistematizacao-PDM
-```
-
-3. Abra o Android Studio e selecione Open, escolhendo a pasta do projeto.
+3. Abra o Android Studio e selecione **Open**, escolhendo a pasta do projeto.
 
 4. Aguarde a sincronização do Gradle e o download das dependências.
 
 5. Execute o app em um dispositivo Android físico ou emulador.
 
 ## 👨‍💻 Desenvolvedor
-Newton Ramos Chaves Junior
 
-Perfil GitHub: Newton Ramos GitHub
+**Newton Ramos Chaves Junior**  
+- Perfil GitHub: [Newton Ramos GitHub](https://github.com/Newton-Ramos)  
+- Repositório do projeto: [Budgex - Sistematização PDM](https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM)
 
-Repositório do projeto: Budgex - Sistematização PDM
+---
 
-“Organize suas finanças pessoais de forma simples e eficiente.” – Budgex
+> “Organize suas finanças pessoais de forma simples e eficiente.” – *Budgex*
 EOF
-
