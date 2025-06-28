@@ -1,13 +1,11 @@
-<p align="center" style="margin-top: 30px; margin-bottom: 10px;">
-  <strong style="font-size: 5em; line-height: 1.2;">Budgex - Sistematização PDM</strong>
+<h1 align="center">Budgex - Sistematização PDM</h1>
+
+<p align="center" style="font-style: italic;">
+Organize suas finanças pessoais de forma simples e eficiente.
 </p>
 
-<p align="center" style="font-size: 1.2em; font-style: italic; margin-bottom: 30px;">
-  Organize suas finanças pessoais de forma simples e eficiente.
-</p>
-
-<p align="center" style="max-width: 650px; margin: auto; margin-bottom: 40px; font-size: 1em;">
-  Este projeto foi desenvolvido como parte da disciplina <strong>Projeto de Desenvolvimento Multiplataforma (PDM)</strong>. O <strong>Budgex</strong> é um aplicativo Android para gerenciamento financeiro pessoal, que permite o cadastro e listagem de despesas e receitas de forma simples e prática.
+<p align="center">
+Este projeto foi desenvolvido como parte da disciplina <strong>Projeto de Desenvolvimento Multiplataforma (PDM)</strong>. O <strong>Budgex</strong> é um aplicativo Android para gerenciamento financeiro pessoal, que permite o cadastro e listagem de despesas e receitas de forma simples e prática.
 </p>
 
 ## 📊 Funcionalidades
