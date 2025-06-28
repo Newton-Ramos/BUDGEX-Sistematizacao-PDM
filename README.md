@@ -1,5 +1,5 @@
 <p align="center" style="margin-top: 30px; margin-bottom: 10px;">
-  <strong style="font-size: 2.8em; line-height: 1.2;">Budgex - Sistematização PDM</strong>
+  <strong style="font-size: 5em; line-height: 1.2;">Budgex - Sistematização PDM</strong>
 </p>
 
 <p align="center" style="font-size: 1.2em; font-style: italic; margin-bottom: 30px;">
