@@ -1,4 +1,4 @@
-cat << 'EOF' > README.md
+cat << EOF > README.md
 <h1 align="center">Budgex - Sistematização PDM</h1>
 
 Este projeto foi desenvolvido como parte da disciplina **Projeto de Desenvolvimento Multiplataforma (PDM)**. O **Budgex** é um aplicativo Android para gerenciamento financeiro pessoal, que permite o cadastro e listagem de despesas e receitas de forma simples e prática.
