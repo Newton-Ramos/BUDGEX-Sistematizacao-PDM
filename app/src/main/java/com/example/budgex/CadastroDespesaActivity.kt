@@ -30,11 +30,11 @@ class CadastroDespesaActivity : AppCompatActivity() {
 
         dbHelper = DatabaseHelper(this)
 
+        // Bloqueia edição manual da data e abre DatePicker ao clicar
+        edtData.keyListener = null
         edtData.setOnClickListener {
             abrirDatePicker()
         }
-        // Evita o teclado aparecer ao tocar no campo data
-        edtData.keyListener = null
 
         btnSalvar.setOnClickListener {
             val descricao = edtDescricao.text.toString().trim()

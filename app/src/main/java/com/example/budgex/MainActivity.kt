@@ -39,38 +39,51 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Inicializa views
         recyclerView = findViewById(R.id.recyclerViewDespesas)
         fabAddDespesa = findViewById(R.id.fabAddDespesa)
         fabAddReceita = findViewById(R.id.fabAddReceita)
         btnMostrarDespesas = findViewById(R.id.btnMostrarDespesas)
         btnMostrarReceitas = findViewById(R.id.btnMostrarReceitas)
         btnClearAll = findViewById(R.id.btnClearAll)
-        tvTotal = findViewById(R.id.tvTotal)  // TextView do total
+        tvTotal = findViewById(R.id.tvTotal)
 
         dbHelper = DatabaseHelper(this)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        despesaAdapter = DespesaAdapter(mutableListOf(),
-            onItemClick = { /* tratar clique se quiser */ },
+        // Adapter de Despesas
+        despesaAdapter = DespesaAdapter(
+            mutableListOf(),
+            onItemClick = { /* opcional */ },
             onItemDelete = { despesa ->
                 val rowsDeleted = dbHelper.deletarDespesa(despesa.id)
-                if (rowsDeleted > 0) {
-                    mostrarDespesas()
-                }
-            })
+                if (rowsDeleted > 0) mostrarDespesas()
+            },
+            onItemEdit = { despesa ->
+                val intent = Intent(this, EditarDespesaActivity::class.java)
+                intent.putExtra("DESPESA_ID", despesa.id)
+                startActivity(intent)
+            }
+        )
 
-        receitaAdapter = ReceitaAdapter(mutableListOf(),
-            onItemClick = { /* tratar clique se quiser */ },
+        // Adapter de Receitas
+        receitaAdapter = ReceitaAdapter(
+            mutableListOf(),
+            onItemClick = { /* opcional */ },
             onItemDelete = { receita ->
                 val rowsDeleted = dbHelper.deletarReceita(receita.id)
-                if (rowsDeleted > 0) {
-                    mostrarReceitas()
-                }
-            })
+                if (rowsDeleted > 0) mostrarReceitas()
+            },
+            onItemEdit = { receita ->
+                val intent = Intent(this, EditarReceitaActivity::class.java)
+                intent.putExtra("RECEITA_ID", receita.id)
+                startActivity(intent)
+            }
+        )
 
-        recyclerView.adapter = despesaAdapter // adapter inicial
+        recyclerView.adapter = despesaAdapter // inicia com despesas
 
+        // Ações dos FABs e Botões
         fabAddDespesa.setOnClickListener {
             startActivity(Intent(this, CadastroDespesaActivity::class.java))
         }
@@ -90,27 +103,19 @@ class MainActivity : AppCompatActivity() {
         btnClearAll.setOnClickListener {
             if (mostrandoDespesas) {
                 val rowsDeleted = dbHelper.deletarTodasDespesas()
-                if (rowsDeleted > 0) {
-                    mostrarDespesas()
-                }
+                if (rowsDeleted > 0) mostrarDespesas()
             } else {
                 val rowsDeleted = dbHelper.deletarTodasReceitas()
-                if (rowsDeleted > 0) {
-                    mostrarReceitas()
-                }
+                if (rowsDeleted > 0) mostrarReceitas()
             }
         }
 
-        mostrarDespesas() // Mostrar despesas ao iniciar
+        mostrarDespesas() // carrega despesas por padrão
     }
 
     override fun onResume() {
         super.onResume()
-        if (mostrandoDespesas) {
-            mostrarDespesas()
-        } else {
-            mostrarReceitas()
-        }
+        if (mostrandoDespesas) mostrarDespesas() else mostrarReceitas()
     }
 
     private fun mostrarDespesas() {

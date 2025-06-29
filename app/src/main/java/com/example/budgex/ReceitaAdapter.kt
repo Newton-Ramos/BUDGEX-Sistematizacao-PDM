@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 class ReceitaAdapter(
     private val lista: MutableList<Receita>,
     private val onItemClick: (Receita) -> Unit,
-    private val onItemDelete: (Receita) -> Unit
+    private val onItemDelete: (Receita) -> Unit,
+    private val onItemEdit: (Receita) -> Unit
 ) : RecyclerView.Adapter<ReceitaAdapter.ReceitaViewHolder>() {
 
     class ReceitaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -19,6 +20,7 @@ class ReceitaAdapter(
         val valor: TextView = view.findViewById(R.id.tvValor)
         val data: TextView = view.findViewById(R.id.tvData)
         val btnDelete: ImageButton = view.findViewById(R.id.btnDeleteReceita)
+        val btnEdit: ImageButton = view.findViewById(R.id.btnEditReceita)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReceitaViewHolder {
@@ -38,6 +40,9 @@ class ReceitaAdapter(
         }
         holder.btnDelete.setOnClickListener {
             onItemDelete(receita)
+        }
+        holder.btnEdit.setOnClickListener {
+            onItemEdit(receita)
         }
     }
 
@@ -59,12 +64,10 @@ class ReceitaAdapter(
         override fun getOldListSize() = oldList.size
         override fun getNewListSize() = newList.size
 
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].id == newList[newItemPosition].id
-        }
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+            oldList[oldItemPosition].id == newList[newItemPosition].id
 
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition] == newList[newItemPosition]
-        }
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+            oldList[oldItemPosition] == newList[newItemPosition]
     }
 }

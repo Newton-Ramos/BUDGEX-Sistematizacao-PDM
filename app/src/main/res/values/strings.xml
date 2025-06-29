@@ -25,7 +25,7 @@
     <!-- Labels e exemplos -->
     <string name="descricao_label">Descrição</string>
     <string name="valor_exemplo">R$ 0,00</string>
-    <string name="data_exemplo">25/06/2024</string>
+    <string name="data_exemplo">01/01/2024</string>
 
     <!-- Tipos -->
     <string name="tipo_despesa">Despesa</string>
@@ -54,4 +54,6 @@
     <!-- Acessibilidade -->
     <string name="deletar_despesa">Deletar Despesa</string>
     <string name="deletar_receita">Deletar Receita</string>
+    <string name="editar_despesa">Editar Despesa</string>
+    <string name="editar_receita">Editar Receita</string>
 </resources>

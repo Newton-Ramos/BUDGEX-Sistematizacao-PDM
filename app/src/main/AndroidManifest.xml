@@ -33,6 +33,10 @@
         <activity android:name=".CadastroDespesaActivity" android:theme="@style/Theme.Budgex" />
         <activity android:name=".CadastroReceitaActivity" android:theme="@style/Theme.Budgex" />
 
+        <!-- TELAS DE EDIÇÃO (ADICIONAR ESSAS DUAS) -->
+        <activity android:name=".EditarDespesaActivity" android:theme="@style/Theme.Budgex" />
+        <activity android:name=".EditarReceitaActivity" android:theme="@style/Theme.Budgex" />
+
     </application>
 
 </manifest>

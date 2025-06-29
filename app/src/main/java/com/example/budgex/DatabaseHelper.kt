@@ -5,162 +5,167 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class DatabaseHelper(context: Context) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        const val DATABASE_NAME = "budgex.db"
-        const val DATABASE_VERSION = 1
-
-        // Tabela de Despesas
-        const val TABLE_DESPESAS = "despesas"
-        const val COL_ID_DESPESA = "id"
-        const val COL_DESCRICAO_DESPESA = "descricao"
-        const val COL_VALOR_DESPESA = "valor"
-        const val COL_DATA_DESPESA = "data"
-
-        // Tabela de Receitas
-        const val TABLE_RECEITAS = "receitas"
-        const val COL_ID_RECEITA = "id"
-        const val COL_DESCRICAO_RECEITA = "descricao"
-        const val COL_VALOR_RECEITA = "valor"
-        const val COL_DATA_RECEITA = "data"
+        private const val DATABASE_NAME = "budgex.db"
+        private const val DATABASE_VERSION = 1
     }
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTableDespesas = """
-            CREATE TABLE $TABLE_DESPESAS (
-                $COL_ID_DESPESA INTEGER PRIMARY KEY AUTOINCREMENT,
-                $COL_DESCRICAO_DESPESA TEXT NOT NULL,
-                $COL_VALOR_DESPESA REAL NOT NULL,
-                $COL_DATA_DESPESA TEXT NOT NULL
-            )
+            CREATE TABLE despesas (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                descricao TEXT NOT NULL,
+                valor REAL NOT NULL,
+                data TEXT NOT NULL
+            );
         """.trimIndent()
-        db.execSQL(createTableDespesas)
 
         val createTableReceitas = """
-            CREATE TABLE $TABLE_RECEITAS (
-                $COL_ID_RECEITA INTEGER PRIMARY KEY AUTOINCREMENT,
-                $COL_DESCRICAO_RECEITA TEXT NOT NULL,
-                $COL_VALOR_RECEITA REAL NOT NULL,
-                $COL_DATA_RECEITA TEXT NOT NULL
-            )
+            CREATE TABLE receitas (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                descricao TEXT NOT NULL,
+                valor REAL NOT NULL,
+                data TEXT NOT NULL
+            );
         """.trimIndent()
+
+        db.execSQL(createTableDespesas)
         db.execSQL(createTableReceitas)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_DESPESAS")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_RECEITAS")
+        db.execSQL("DROP TABLE IF EXISTS despesas")
+        db.execSQL("DROP TABLE IF EXISTS receitas")
         onCreate(db)
     }
 
+    // --- Inserir Despesa
     fun inserirDespesa(despesa: Despesa): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COL_DESCRICAO_DESPESA, despesa.descricao)
-            put(COL_VALOR_DESPESA, despesa.valor)
-            put(COL_DATA_DESPESA, despesa.data)
+            put("descricao", despesa.descricao)
+            put("valor", despesa.valor)
+            put("data", despesa.data)
         }
-        val id = db.insert(TABLE_DESPESAS, null, values)
-        db.close()
-        return id
+        return db.insert("despesas", null, values)
     }
 
+    // --- Inserir Receita
     fun inserirReceita(receita: Receita): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COL_DESCRICAO_RECEITA, receita.descricao)
-            put(COL_VALOR_RECEITA, receita.valor)
-            put(COL_DATA_RECEITA, receita.data)
+            put("descricao", receita.descricao)
+            put("valor", receita.valor)
+            put("data", receita.data)
         }
-        val id = db.insert(TABLE_RECEITAS, null, values)
-        db.close()
-        return id
+        return db.insert("receitas", null, values)
+    }
+
+    // --- Métodos para Despesas ---
+
+    fun getDespesaById(id: Int): Despesa? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM despesas WHERE id = ?", arrayOf(id.toString()))
+        val despesa = if (cursor.moveToFirst()) {
+            val descricao = cursor.getString(cursor.getColumnIndexOrThrow("descricao"))
+            val valor = cursor.getDouble(cursor.getColumnIndexOrThrow("valor"))
+            val data = cursor.getString(cursor.getColumnIndexOrThrow("data"))
+            Despesa(id, descricao, valor, data)
+        } else null
+        cursor.close()
+        return despesa
+    }
+
+    fun atualizarDespesa(id: Int, descricao: String, valor: Double, data: String): Int {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("descricao", descricao)
+            put("valor", valor)
+            put("data", data)
+        }
+        return db.update("despesas", values, "id = ?", arrayOf(id.toString()))
+    }
+
+    fun deletarDespesa(id: Int): Int {
+        val db = writableDatabase
+        return db.delete("despesas", "id = ?", arrayOf(id.toString()))
+    }
+
+    fun deletarTodasDespesas(): Int {
+        val db = writableDatabase
+        return db.delete("despesas", null, null)
     }
 
     fun getAllDespesas(): List<Despesa> {
         val lista = mutableListOf<Despesa>()
         val db = readableDatabase
-        val cursor = db.query(
-            TABLE_DESPESAS,
-            null,
-            null,
-            null,
-            null,
-            null,
-            "$COL_ID_DESPESA DESC"
-        )
-
-        with(cursor) {
-            while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(COL_ID_DESPESA))
-                val descricao = getString(getColumnIndexOrThrow(COL_DESCRICAO_DESPESA))
-                val valor = getDouble(getColumnIndexOrThrow(COL_VALOR_DESPESA))
-                val data = getString(getColumnIndexOrThrow(COL_DATA_DESPESA))
-                lista.add(Despesa(id, descricao, valor, data))
+        val cursor = db.query("despesas", null, null, null, null, null, "data DESC")
+        cursor.use {
+            if (it.moveToFirst()) {
+                do {
+                    val id = it.getInt(it.getColumnIndexOrThrow("id"))
+                    val descricao = it.getString(it.getColumnIndexOrThrow("descricao"))
+                    val valor = it.getDouble(it.getColumnIndexOrThrow("valor"))
+                    val data = it.getString(it.getColumnIndexOrThrow("data"))
+                    lista.add(Despesa(id, descricao, valor, data))
+                } while (it.moveToNext())
             }
-            close()
         }
-
-        db.close()
         return lista
+    }
+
+    // --- Métodos para Receitas ---
+
+    fun getReceitaById(id: Int): Receita? {
+        val db = readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM receitas WHERE id = ?", arrayOf(id.toString()))
+        val receita = if (cursor.moveToFirst()) {
+            val descricao = cursor.getString(cursor.getColumnIndexOrThrow("descricao"))
+            val valor = cursor.getDouble(cursor.getColumnIndexOrThrow("valor"))
+            val data = cursor.getString(cursor.getColumnIndexOrThrow("data"))
+            Receita(id, descricao, valor, data)
+        } else null
+        cursor.close()
+        return receita
+    }
+
+    fun atualizarReceita(id: Int, descricao: String, valor: Double, data: String): Int {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("descricao", descricao)
+            put("valor", valor)
+            put("data", data)
+        }
+        return db.update("receitas", values, "id = ?", arrayOf(id.toString()))
+    }
+
+    fun deletarReceita(id: Int): Int {
+        val db = writableDatabase
+        return db.delete("receitas", "id = ?", arrayOf(id.toString()))
+    }
+
+    fun deletarTodasReceitas(): Int {
+        val db = writableDatabase
+        return db.delete("receitas", null, null)
     }
 
     fun getAllReceitas(): List<Receita> {
         val lista = mutableListOf<Receita>()
         val db = readableDatabase
-        val cursor = db.query(
-            TABLE_RECEITAS,
-            null,
-            null,
-            null,
-            null,
-            null,
-            "$COL_ID_RECEITA DESC"
-        )
-
-        with(cursor) {
-            while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(COL_ID_RECEITA))
-                val descricao = getString(getColumnIndexOrThrow(COL_DESCRICAO_RECEITA))
-                val valor = getDouble(getColumnIndexOrThrow(COL_VALOR_RECEITA))
-                val data = getString(getColumnIndexOrThrow(COL_DATA_RECEITA))
-                lista.add(Receita(id, descricao, valor, data))
+        val cursor = db.query("receitas", null, null, null, null, null, "data DESC")
+        cursor.use {
+            if (it.moveToFirst()) {
+                do {
+                    val id = it.getInt(it.getColumnIndexOrThrow("id"))
+                    val descricao = it.getString(it.getColumnIndexOrThrow("descricao"))
+                    val valor = it.getDouble(it.getColumnIndexOrThrow("valor"))
+                    val data = it.getString(it.getColumnIndexOrThrow("data"))
+                    lista.add(Receita(id, descricao, valor, data))
+                } while (it.moveToNext())
             }
-            close()
         }
-
-        db.close()
         return lista
-    }
-
-    fun deletarDespesa(id: Int): Int {
-        val db = writableDatabase
-        val rowsDeleted = db.delete(TABLE_DESPESAS, "$COL_ID_DESPESA = ?", arrayOf(id.toString()))
-        db.close()
-        return rowsDeleted
-    }
-
-    fun deletarReceita(id: Int): Int {
-        val db = writableDatabase
-        val rowsDeleted = db.delete(TABLE_RECEITAS, "$COL_ID_RECEITA = ?", arrayOf(id.toString()))
-        db.close()
-        return rowsDeleted
-    }
-
-    // Métodos para deletar todas as despesas e receitas
-    fun deletarTodasDespesas(): Int {
-        val db = writableDatabase
-        val rowsDeleted = db.delete(TABLE_DESPESAS, null, null)
-        db.close()
-        return rowsDeleted
-    }
-
-    fun deletarTodasReceitas(): Int {
-        val db = writableDatabase
-        val rowsDeleted = db.delete(TABLE_RECEITAS, null, null)
-        db.close()
-        return rowsDeleted
     }
 }

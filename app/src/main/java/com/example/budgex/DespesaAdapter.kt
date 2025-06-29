@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 class DespesaAdapter(
     private val lista: MutableList<Despesa>,
     private val onItemClick: (Despesa) -> Unit,
-    private val onItemDelete: (Despesa) -> Unit
+    private val onItemDelete: (Despesa) -> Unit,
+    private val onItemEdit: (Despesa) -> Unit
 ) : RecyclerView.Adapter<DespesaAdapter.DespesaViewHolder>() {
 
     class DespesaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -19,6 +20,7 @@ class DespesaAdapter(
         val valor: TextView = view.findViewById(R.id.tvValor)
         val data: TextView = view.findViewById(R.id.tvData)
         val btnDelete: ImageButton = view.findViewById(R.id.btnDeleteDespesa)
+        val btnEdit: ImageButton = view.findViewById(R.id.btnEditDespesa)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DespesaViewHolder {
@@ -38,6 +40,9 @@ class DespesaAdapter(
         }
         holder.btnDelete.setOnClickListener {
             onItemDelete(despesa)
+        }
+        holder.btnEdit.setOnClickListener {
+            onItemEdit(despesa)
         }
     }
 
@@ -59,12 +64,10 @@ class DespesaAdapter(
         override fun getOldListSize() = oldList.size
         override fun getNewListSize() = newList.size
 
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].id == newList[newItemPosition].id
-        }
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+            oldList[oldItemPosition].id == newList[newItemPosition].id
 
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition] == newList[newItemPosition]
-        }
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+            oldList[oldItemPosition] == newList[newItemPosition]
     }
 }
