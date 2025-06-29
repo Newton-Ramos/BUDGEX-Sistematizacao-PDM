@@ -60,6 +60,11 @@ cd BUDGEX-Sistematizacao-PDM
 - Meu Repositório Online - [Newton Ramos GitHub](https://github.com/Newton-Ramos)
 
 - Repositório do Projeto BUDGEX - [Projeto BUDGEX](https://github.com/Newton-Ramos/BUDGEX-Sistematizacao-PDM)
+
+- Arquivo Drive - [Google Drive](https://drive.google.com/drive/folders/1EX3rdwvJjzw0BiDukoRV3XISY4bUaIpJ?usp=sharing)
+
+- Vídeo da Apresentação - [YouTube](https://www.youtube.com/watch?v=PD92iwtjP_Q)
+
 ---
 
 > “Organize suas finanças pessoais de forma simples e eficiente.” – *Budgex*
